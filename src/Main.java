@@ -3,8 +3,8 @@ class Fraction {
     int numerator=1, denominator=1;
     String frac=numerator+"/"+denominator;
 
-    int getNum(){return numerator;};
-    int getDen(){return denominator;};
+    int getNum(){return numerator;}
+    int getDen(){return denominator;}
     void setNum(int x){this.numerator = x;frac=numerator+"/"+denominator;}
     void setDen(int x){this.denominator = x;frac=numerator+"/"+denominator;}
     String getFrac(){return frac;}
@@ -82,6 +82,7 @@ class Fraction {
 public class Main {
     public static void main(String[] args) {
         Scanner scan=new Scanner(System.in);
+        int z;
         Fraction f1=new Fraction();
         Fraction f2=new Fraction();
         Fraction f3=new Fraction();
@@ -94,18 +95,24 @@ public class Main {
         System.out.println("Input denominator 1");
         while (true){
             if (!scan.hasNextInt()){System.out.println("Input int!");scan.next();}
-            else {f1.setDen(scan.nextInt());break;}
+            else {z=scan.nextInt();
+                if (z!=0){f1.setDen(z);break;}
+                else{System.out.println("Input not a zero!");scan.next();}
+            }
         }
 
-        System.out.println("Input numerator 1");
+        System.out.println("Input numerator 2");
         while (true){
             if (!scan.hasNextInt()){System.out.println("Input int!");scan.next();}
             else {f2.setNum(scan.nextInt());break;}
         }
-        System.out.println("Input denominator 1");
+        System.out.println("Input denominator 2");
         while (true){
             if (!scan.hasNextInt()){System.out.println("Input int!");scan.next();}
-            else {f2.setDen(scan.nextInt());break;}
+            else {z=scan.nextInt();
+                if (z!=0){f1.setDen(z);break;}
+                else{System.out.println("Input not a zero!");scan.next();}
+            }
         }
 
         System.out.println("f1 = Fraction 1 = " + f1.getFrac());
