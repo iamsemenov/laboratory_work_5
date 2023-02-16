@@ -110,7 +110,7 @@ public class Main {
         while (true){
             if (!scan.hasNextInt()){System.out.println("Input int!");scan.next();}
             else {z=scan.nextInt();
-                if (z!=0){f1.setDen(z);break;}
+                if (z!=0){f2.setDen(z);break;}
                 else{System.out.println("Input not a zero!");scan.next();}
             }
         }
