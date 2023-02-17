@@ -3,11 +3,30 @@ class Fraction {
     int numerator=1, denominator=1;
     String frac=numerator+"/"+denominator;
 
+    void reduction(){
+
+        int h=2,a=0,b=0,p=0;
+        a=this.numerator;b=this.denominator;
+        while (h<=this.numerator){
+            if (a%h==0 && b%h==0){
+                a=a/h;
+                b=b/h;
+                p=1;
+
+            }
+            else{h=h+1;}
+        }
+        if (p==1) {
+            this.numerator = a;
+            this.denominator = b;
+        }
+    }
+
     int getNum(){return numerator;}
     int getDen(){return denominator;}
     void setNum(int x){this.numerator = x;frac=numerator+"/"+denominator;}
     void setDen(int x){this.denominator = x;frac=numerator+"/"+denominator;}
-    String getFrac(){return frac;}
+    String getFrac(){return numerator+"/"+denominator;}
 
 
     void sumFracs(Fraction f1, Fraction f2){  //f1+f2
@@ -115,32 +134,46 @@ public class Main {
             }
         }
 
+
         System.out.println("f1 = Fraction 1 = " + f1.getFrac());
         System.out.println("f2 = Fraction 2 = " + f2.getFrac());
+
         f3.sumFracs(f1,f2);
-        f1.addFrac(f2);
-        System.out.println("f1 + f2 =" + f1.getFrac());
+        f3.reduction();
         System.out.println("f1 + f2 =" + f3.getFrac());
-        f1.subtractFrac(f2);
+
+
+        f3.setNum(f1.getNum());
+        f3.setDen(f1.getDen());
+        f3.addFrac(f2);
+        f3.reduction();
+        System.out.println("f1 + f2 =" + f3.getFrac());
 
         f3.differenceFracs(f1,f2);
-        f1.subtractFrac(f2);
-        System.out.println("f1 - f2 =" + f1.getFrac());
         System.out.println("f1 - f2 =" + f3.getFrac());
-        f1.addFrac(f2);
+
+        f3.setNum(f1.getNum());
+        f3.setDen(f1.getDen());
+        f3.subtractFrac(f2);
+        f3.reduction();
+        System.out.println("f1 - f2 =" + f3.getFrac());
 
         f3.productFracs(f1,f2);
+        f3.reduction();
         System.out.println("f1 * f2 =" + f3.getFrac());
         f3.setNum(f1.getNum());
         f3.setDen(f1.getDen());
         f3.multiplyFrac(f2);
+        f3.reduction();
         System.out.println("f1 * f2 =" + f3.getFrac());
 
         f3.quotientFracs(f1,f2);
+        f3.reduction();
         System.out.println("f1 / f2 =" + f3.getFrac());
         f3.setNum(f1.getNum());
         f3.setDen(f1.getDen());
         f3.divideFrac(f2);
+        f3.reduction();
         System.out.println("f1 / f2 =" + f3.getFrac());
 
     }
