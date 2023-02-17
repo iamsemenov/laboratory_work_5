@@ -26,6 +26,7 @@ class Fraction {
     int getDen(){return denominator;}
     void setNum(int x){this.numerator = x;frac=numerator+"/"+denominator;}
     void setDen(int x){this.denominator = x;frac=numerator+"/"+denominator;}
+    void createFrac(int x,int y){this.numerator=x;this.denominator=y;frac=numerator+"/"+denominator;}
     String getFrac(){return numerator+"/"+denominator;}
 
 
@@ -65,7 +66,7 @@ class Fraction {
         a=f1.getNum()*f2.getNum();
         b=f1.getDen()*f2.getDen();
         this.frac=a+"/"+b;
-        this.numerator=a;
+        this.numerator=a; // каскадное присваевание
         this.denominator=b;
 
     }
@@ -115,7 +116,7 @@ public class Main {
         while (true){
             if (!scan.hasNextInt()){System.out.println("Input int!");scan.next();}
             else {z=scan.nextInt();
-                if (z!=0){f1.setDen(z);break;}
+                if (z!=0){f1.setDen(z);break;} // try catch в класс
                 else{System.out.println("Input not a zero!");scan.next();}
             }
         }
@@ -134,13 +135,17 @@ public class Main {
             }
         }
 
+        f3.createFrac(1,1);
 
         System.out.println("f1 = Fraction 1 = " + f1.getFrac());
         System.out.println("f2 = Fraction 2 = " + f2.getFrac());
+        System.out.println("f3 = Fraction 3 = " + f3.getFrac());
 
         f3.sumFracs(f1,f2);
         f3.reduction();
         System.out.println("f1 + f2 =" + f3.getFrac());
+
+
 
 
         f3.setNum(f1.getNum());
